@@ -12,6 +12,16 @@ clf = pickle.load(model_pickle)
 def ping():
     return {"message" : "Hi there, this endpoint is working!!!!"}
 
+## endpoint to get template request for model inference
+@app.route("/template", methods = ['GET'])
+def get_template():
+    return {
+	"gender": "Male/Female",
+	"married": "Married/Unmarried",
+	"applicant_income": "<Numeric Salary>",
+	"loan_amount": "Numeric loan amount",
+	"credit_history": "Cleared Debts / Uncleared Debts"}
+
 
 ##defining the endpoint for classification
 @app.route("/predict", methods = ['Post', 'GET'])
